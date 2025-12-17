@@ -1,4 +1,18 @@
-let guests = JSON.parse(localStorage.getItem("guests")) || [];
+const defaultGuests = [
+    { name: "Петр Иванов", room: "112" },
+    { name: "Иван Петров", room: "110а" },
+    { name: "Иван Соболев", room: "110б" },
+    { name: "Елена Кудрявая", room: "201" },
+    { name: "Илья Кудыкин", room: "200а" }
+];
+
+let guests = JSON.parse(localStorage.getItem("guests"));
+
+if (!guests) {
+    guests = defaultGuests;
+    localStorage.setItem("guests", JSON.stringify(guests));
+}
+
 
 const list = document.getElementById("guestList");
 const search = document.getElementById("search");
